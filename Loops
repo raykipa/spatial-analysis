@@ -1,0 +1,40 @@
+> newdata <- newdata1
+> for(i in 1:nrow(newdata)){
++     if (newdata$aged_16_to_74[i] < 0.25) {
++         newdata$aged_16_to_74[i] <- "Very Low";
++     } else if (newdata$aged_16_to_74[i] < 0.50){
++         newdata$aged_16_to_74[i] <- "Low";
++     } else if (newdata$aged_16_to_74[i] < 0.75){
++         newdata$aged_16_to_74[i] <- "High";
++     } else {
++         newdata$aged_16_to_74[i] <- "Very High";
++     }}
+> 
+> shapefile <- merge(Output.Areas, newdata, by.x = "WZ11CD", by.y = "OA")
+> map(shapefile, "No_Qualification", "Set2")
+Warning messages:
+1: The argument fontsize of tm_compass is deprecated. It has been renamed to text.size 
+2: The shape x is invalid. See sf::st_is_valid 
+> newdata <- newdata1
+> 
+> 
+> for(j in 2: ncol (newdata)){
++     
++     for(i in 1:nrow(newdata)){
++         
++         if (newdata[i,j] < 0.25) {
++             newdata[i,j] <- "Very Low";
++             
++         } else if (newdata[i,j] < 0.50){
++             newdata[i,j] <- "Low";
++             
++         } else if (newdata[i,j] < 0.75){
++             newdata[i,j] <- "High";
++             
++         } else {
++             newdata[i,j] <- "Very High";
++             
++         }
++     }
++ }
+> map(shapefile, "No_Qualification", "Set2")
